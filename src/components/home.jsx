@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import HomeCarousel from './home-carousel';
 import Stats from './stats';
 import Videos from './videos';
-import VideoUpload from './video-upload';
 
 class Home extends Component {
   constructor(props) {
@@ -11,14 +10,13 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="ca-eagles">
+      <Fragment>
         <HomeCarousel />
         <section className="content">
           <Videos />
-          <VideoUpload />
           <Stats />
         </section>
-      </div>
+      </Fragment>
     )
   }
 }

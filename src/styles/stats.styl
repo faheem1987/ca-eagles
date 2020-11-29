@@ -28,7 +28,8 @@
     margin-right: 0 !important;
   }
 
-  .player {
+  .player,
+  .match-result {
     max-width: 370px;
     width: 100%;
     background: #0f218b;
@@ -45,5 +46,24 @@
         border-radius: 50px;  
       }
     }
+  }
+
+  .match-result {
+    font-size: 16px;
+    padding: 20px; 
+    
+    .date-url {
+      font-size: 12px;
+      padding: 0 30px;
+      margin-left: 20px;
+    }
+  }
+
+  .winner {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 222px;
+    display: inline-block;
   }
 }

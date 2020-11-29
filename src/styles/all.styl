@@ -7,14 +7,26 @@
 @require "custom-button";
 @require "login";
 @require "videos";
+@require "admin-form";
+@require "players";
+@require "profile";
 @require "react-dropdown/style.css";
+@require "react-datepicker/dist/react-datepicker.css";
 
 body, ul {
   font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
-  background-color: #e056fd;
   color: #fff;
+}
+
+h1,h2,h3,h4,h5,h5 {
+  font-family: 'Shadows Into regular', cursive;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
 }
 
 h2 {
@@ -31,19 +43,32 @@ li {
   padding: 0;
 }
 
-.login,
-.players-ranking-form {
-  background: #fff;
-  width: 800px;
-  height: 500px;
-  margin: 100px auto;
-  border-radius: 8px;
-  padding: 60px;
+.f-icon {
+  margin-right: 20px;
 }
 
-.players-ranking-form {
-  .Dropdown-root {
-    margin-bottom: 40px;
-  }
+.fa-thumbs-down {
+  color: red;  
+}
+
+.fa-thumbs-up {
+  color: green;
+}
+
+input {
+  height: 42px !important;  
+}
+
+textarea {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+label {
+  color: #000;
+}
+
+.hidden {
+  display: none;
 }
 

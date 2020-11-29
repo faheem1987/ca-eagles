@@ -6,8 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-import { logout } from '../store/login/login.actions';
-import { toggleVideoUploader } from '../store/form/form.actions'
+import { logout } from '../../store/login/login.actions';
 
 
 const Header = (props) => {
@@ -21,16 +20,10 @@ const Header = (props) => {
           <Link to="/">Home</Link>
           <Link to="/players">Players</Link>
           <Link to="/gallery">Gallery</Link>
-          { props.auth.uid && 
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <Link to="/rankings">Rankings</Link>
-              <a onClick={showUploader}>Video uploader</a>
-            </NavDropdown>
+          <Link to="/admin">Admin</Link>
+          {props.auth.uid && 
+            <a onClick={props.logout}>Logout</a>
           }
-          {!props.auth.uid && 
-            <Link to="/login">Login</Link>
-          }
-          
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -44,6 +37,5 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {
-  logout,
-  toggleVideoUploader
+  logout
 })(Header);

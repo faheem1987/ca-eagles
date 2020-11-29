@@ -1,47 +1,33 @@
-import React, {Component} from 'react';
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom';
-import Header from './components/header';
-import Footer from './components/footer';
-import Home from "./components/home";
-import History from "./components/history";
-import Players from "./components/players";
-import Login from "./components/login";
-import Gallery from "./components/gallery";
-import PlayerRankingsForm from "./components/player-rankings-form";
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import Header from './components/common/header';
+import Footer from './components/common/footer';
+import Home from './components/home';
+import History from './components/history';
+import Players from './components/players';
+import Admin from './components/admin/admin';
+import Gallery from './components/gallery';
+import Profile from './components/profile';
 
-import "./styles/all.styl"
+import './styles/all.styl';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Router>
-          <Header />
-          <Switch>
-            <Route path="/history" component={History} />
-            <Route path="/players" component={Players} />
-            <Route path="/login"  component={Login} />
-            <Route path="/gallery"  component={Gallery} />
-            <Route path="/rankings"  component={PlayerRankingsForm} />
-            <Route path="/" component={Home} />
-          </Switch>
-          <Footer/>
-        </Router>
+const App = () => (
+  <div className="ca-eagles">
+    <Router>
+      <Header />
+      <div className="content-wrapper">
+        <Switch>
+          <Route path="/history" component={History} />
+          <Route path="/players" component={Players} />
+          <Route path="/admin" component={Admin} />
+          <Route path="/gallery" component={Gallery} />
+          <Route path="/:id" component={Profile} />
+          <Route path="/" component={Home} />
+        </Switch>
       </div>
-    );
-  }
-}
-
-// function App() {
-//   return (
-//     <Router>
-//       <Route path="/" exact component={Home} />
-//       <Route path="/history" component={History} />
-//       <Route path="/players" component={Players} />
-//       <Route path="/login"  component={Login} />
-//       <Route path="/gallery"  component={Gallery} />
-//     </Router>
-//   )
-// }
+      <Footer />
+    </Router>
+  </div>
+);
 
 export default App;
