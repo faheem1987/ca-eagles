@@ -1,13 +1,13 @@
-import React from "react"
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
-import Header from "./components/common/header"
-import Footer from "./components/common/footer"
-import Home from "./components/home"
-import History from "./components/history"
-import Players from "./components/players"
-import Admin from "./components/admin/admin"
-import Gallery from "./components/gallery"
-import Profile from "./components/profile"
+import React from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import Header from "./components/common/header";
+import Footer from "./components/common/footer";
+import Home from "./components/home";
+import History from "./components/history";
+import Players from "./components/players";
+import Admin from "./components/admin/admin";
+import Gallery from "./components/gallery";
+import Profile from "./components/profile";
 
 const App = () => (
   <div className="ca-eagles">
@@ -26,6 +26,6 @@ const App = () => (
       <Footer />
     </Router>
   </div>
-)
+);
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
-import React from "react"
-import Carousel from "react-bootstrap/Carousel"
+import React from "react";
+import Carousel from "react-bootstrap/Carousel";
 
 const HomeCarousel = () => (
   <Carousel className="home-carousel">
@@ -25,6 +25,6 @@ const HomeCarousel = () => (
       />
     </Carousel.Item>
   </Carousel>
-)
+);
 
-export default HomeCarousel
+export default HomeCarousel;

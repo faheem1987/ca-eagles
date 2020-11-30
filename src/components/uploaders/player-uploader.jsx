@@ -1,18 +1,15 @@
-import React, { useState } from "react"
-import { connect } from "react-redux"
-import Dropdown from "react-dropdown"
-import DatePicker from "react-datepicker"
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import CustomButton from "../common/custom-button"
-import AlertSection from "../common/alert"
-import FormInput from "../common/form-input"
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import Dropdown from "react-dropdown";
+import CustomButton from "../common/custom-button";
+import AlertSection from "../common/alert";
+import FormInput from "../common/form-input";
 
-import { uploadImage } from "../../store/form/form.actions"
+import { uploadImage } from "../../store/form/form.actions";
 
 const PlayerUploader = (props) => {
-  const { uploadImage, successMessage, error, isLoading } = props
-  const helperObj = { value: "", error: null }
+  const { uploadImage, successMessage, error, isLoading } = props;
+  const helperObj = { value: "", error: null };
   const [state, setState] = useState({
     playerName: helperObj,
     DOB: helperObj,
@@ -21,43 +18,45 @@ const PlayerUploader = (props) => {
     bio: helperObj,
     image: helperObj,
     globalError: null,
-  })
+  });
 
   const validator = () => {
-    const { playerName, skill, country, image, DOB } = state
-    return [playerName, skill, country, image, DOB].filter((feild) => !feild.value)
-  }
+    const { playerName, skill, country, image, DOB } = state;
+    return [playerName, skill, country, image, DOB].filter(
+      (feild) => !feild.value
+    );
+  };
 
   const updateState = (updatedState) =>
     setState({
       ...state,
       ...updatedState,
-    })
+    });
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    const hasError = validator()
-    const updatedState = {}
+    e.preventDefault();
+    const hasError = validator();
+    const updatedState = {};
     if (hasError.length) {
       return Object.keys(state).forEach((key) => {
-        if (key === "bio" || key === "globalError") return null
+        if (key === "bio" || key === "globalError") return null;
         if (!state[key].value) {
           updatedState[key] = {
             value: state[key].value,
             error: true,
-          }
+          };
           updateState({
             ...updatedState,
             globalError: "Please enter a value in highlighted feild/s",
-          })
+          });
         }
-      })
+      });
     }
     updateState({
       globalError: null,
-    })
+    });
 
-    const { playerName, DOB, skill, country, bio, image } = state
+    const { playerName, DOB, skill, country, bio, image } = state;
 
     return uploadImage({
       playerName: playerName.value,
@@ -66,7 +65,7 @@ const PlayerUploader = (props) => {
       country: country.value,
       image: image.value,
       bio: bio.value,
-    })
+    });
 
     // .then(() => {
     //   setPlayerName("");
@@ -76,26 +75,29 @@ const PlayerUploader = (props) => {
     //   setBio("");
     //   setImage("");
     // });
-  }
+  };
 
   const handleChange = (v, stateType, isValidate) => {
     if (isValidate && !v.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/) && v !== "") {
       return setState({
         ...state,
         [stateType]: { value: null, error: "Please enter a valid value" },
-      })
+      });
     }
 
     return setState({
       ...state,
       [stateType]: { value: v, error: null },
-    })
-  }
-  const { playerName, DOB, skill, country, image, globalError } = state
+    });
+  };
+  const { playerName, DOB, skill, country, image, globalError } = state;
   return (
     <form className="uploader" onSubmit={onSubmit}>
       {(successMessage || error || globalError) && (
-        <AlertSection successMessage={successMessage} error={error || globalError} />
+        <AlertSection
+          successMessage={successMessage}
+          error={error || globalError}
+        />
       )}
       <FormInput
         className={playerName.error ? "danger" : ""}
@@ -103,7 +105,7 @@ const PlayerUploader = (props) => {
         name="player name"
         value={playerName.value}
         handleChange={({ target }) => {
-          handleChange(target.value, "playerName", true)
+          handleChange(target.value, "playerName", true);
         }}
         error={playerName.error}
         label="Player name"
@@ -113,7 +115,7 @@ const PlayerUploader = (props) => {
         type="date"
         placeholder="DOB"
         onChange={({ target }) => {
-          handleChange(target.value, "DOB")
+          handleChange(target.value, "DOB");
         }}
       />
       <Dropdown
@@ -121,7 +123,7 @@ const PlayerUploader = (props) => {
         value={skill.value}
         options={["Batsman", "Bowler", "Alrounder"]}
         onChange={({ value }) => {
-          handleChange(value, "skill")
+          handleChange(value, "skill");
         }}
         placeholder="Select bowler/batman"
       />
@@ -130,7 +132,7 @@ const PlayerUploader = (props) => {
         value={country.value}
         options={["India", "Pakistan", "Westindies", "Srilanka"]}
         onChange={({ value }) => {
-          handleChange(value, "country")
+          handleChange(value, "country");
         }}
         placeholder="Select country"
       />
@@ -139,7 +141,7 @@ const PlayerUploader = (props) => {
         rows="5"
         cols="50"
         onChange={({ target }) => {
-          handleChange(target.value, "bio")
+          handleChange(target.value, "bio");
         }}
       />
       <input
@@ -147,7 +149,7 @@ const PlayerUploader = (props) => {
         id="files"
         className={`file-uploader ${image.error ? "danger" : ""}`}
         onChange={({ target }) => {
-          handleChange(target.files[0], "image")
+          handleChange(target.files[0], "image");
         }}
       />
       <br />
@@ -159,15 +161,15 @@ const PlayerUploader = (props) => {
         className="p-uploder"
       />
     </form>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => ({
   isLoading: state.formReducer.isLoading,
   successMessage: state.formReducer.successMessage,
   error: state.formReducer.error,
-})
+});
 
 export default connect(mapStateToProps, {
   uploadImage,
-})(PlayerUploader)
+})(PlayerUploader);

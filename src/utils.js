@@ -1,3 +1,4 @@
-const formatedDate = (d) => `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`
+const formatedDate = (d) =>
+  `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
 
-export default formatedDate
+export default formatedDate;

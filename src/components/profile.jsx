@@ -1,51 +1,51 @@
-import React, { Component } from "react"
-import { connect } from "react-redux"
-import { firestoreConnect } from "react-redux-firebase"
-import { compose } from "redux"
-import getProfile from "../store/profile/profile.actions"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import getProfile from "../store/profile/profile.actions";
 
 class Profile extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       players: null,
-    }
+    };
   }
 
   componentDidMount() {
-    const { players, getProfile, match } = this.props
+    const { players, getProfile, match } = this.props;
     if (players && players.length) {
-      const { id } = match.params || {}
-      getProfile(players, id)
+      const { id } = match.params || {};
+      getProfile(players, id);
     }
   }
 
   static getDerivedStateFromProps(nextProps, previousState) {
     if (nextProps.players !== previousState.players) {
-      return { players: nextProps.players }
+      return { players: nextProps.players };
     }
-    return null
+    return null;
   }
 
   componentDidUpdate(nextProps) {
-    const { players, getProfile, match } = this.props
-    const { id } = match.params || {}
+    const { players, getProfile, match } = this.props;
+    const { id } = match.params || {};
     if (players !== nextProps.players) {
-      getProfile(players, id)
+      getProfile(players, id);
     }
   }
 
   render() {
-    const { profile } = this.props
-    const { url, country, playerName, DOB } = this.props.profile || {}
+    const { profile } = this.props;
+    const { url, country, playerName, DOB } = this.props.profile || {};
     return (
       <div className="profile content">
         {!profile ? (
           <div>Loader ....</div>
         ) : (
           <div className="profile-info">
-            <img src={url} />
+            <img src={url} alt="player" />
             <div className="dob-player-style">
               <h2>{playerName}</h2>
               <div>
@@ -72,7 +72,7 @@ class Profile extends Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
@@ -80,7 +80,7 @@ const mapStateToProps = (state) => ({
   players: state.firestore.ordered.playerInfo,
   profile: state.profile.player,
   isLoading: state.firestore.status.requesting.images,
-})
+});
 
 export default compose(
   connect(mapStateToProps, {
@@ -91,4 +91,4 @@ export default compose(
       collection: "playerInfo",
     },
   ])
-)(Profile)
+)(Profile);

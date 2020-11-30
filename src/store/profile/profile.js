@@ -2,12 +2,12 @@ const initialState = {
   isLoading: false,
   error: null,
   player: [],
-}
+};
 
 const getPlayer = ({ players, id }) => {
-  const p = (players || []).filter((player) => player.id === id)
-  return p.length ? p[0] : []
-}
+  const p = (players || []).filter((player) => player.id === id);
+  return p.length ? p[0] : [];
+};
 
 const playerBioReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -15,10 +15,10 @@ const playerBioReducer = (state = initialState, action) => {
       return {
         ...state,
         player: getPlayer(action),
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default playerBioReducer
+export default playerBioReducer;

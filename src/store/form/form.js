@@ -1,10 +1,10 @@
-import * as types from "./form.types"
+import * as types from "./form.types";
 
 const initialState = {
   showVideoUploader: false,
   isLoading: false,
   successMessage: null,
-}
+};
 
 const formReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -15,7 +15,7 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-      }
+      };
     case types.UPLOAD_VIDEO_SUCCESS:
     case types.POST_RANKING_SUCCESS:
     case types.POST_MATCH_RESULT_SUCCESS:
@@ -24,7 +24,7 @@ const formReducer = (state = initialState, action) => {
         ...state,
         successMessage: "Uploaded!",
         isLoading: false,
-      }
+      };
     case types.UPLOAD_VIDEO_FAILURE:
     case types.POST_RANKING_FAILURE:
     case types.POST_MATCH_RESULT_FAILURE:
@@ -33,15 +33,15 @@ const formReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: "Something went wrong. Please try again later!",
-      }
+      };
     case types.RESET_SUCCESS_MESSAGE:
       return {
         ...state,
         successMessage: null,
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default formReducer
+export default formReducer;

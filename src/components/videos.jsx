@@ -1,12 +1,12 @@
-import React from "react"
-import { connect } from "react-redux"
-import { firestoreConnect } from "react-redux-firebase"
-import { compose } from "redux"
+import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
-import ReactPlayer from "react-player/youtube"
+import ReactPlayer from "react-player/youtube";
 
 const Videos = (props) => {
-  const URL = (props.videos && props.videos[0].URL) || []
+  const URL = (props.videos && props.videos[0].URL) || [];
   return (
     <section className="hp-videos content">
       <h2 className="float-left">Latest Videos</h2>
@@ -26,12 +26,12 @@ const Videos = (props) => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => ({
   videos: state.firestore.ordered.videos,
-})
+});
 
 export default compose(
   connect(mapStateToProps),
@@ -40,4 +40,4 @@ export default compose(
       collection: "videos",
     },
   ])
-)(Videos)
+)(Videos);

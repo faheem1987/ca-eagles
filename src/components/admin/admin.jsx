@@ -1,39 +1,39 @@
-import React, { Component, Fragment } from "react"
-import { connect } from "react-redux"
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-import FormInput from "../common/form-input"
-import CustomButton from "../common/custom-button"
-import AdminForm from "./admin-form"
-import { login } from "../../store/login/login.actions"
-import { resetSuccessMessage } from "../../store/form/form.actions"
+import FormInput from "../common/form-input";
+import CustomButton from "../common/custom-button";
+import AdminForm from "./admin-form";
+import { login } from "../../store/login/login.actions";
+import { resetSuccessMessage } from "../../store/form/form.actions";
 
 class Admin extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSumbit = this.handleSumbit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSumbit = this.handleSumbit.bind(this);
     this.state = {
       email: "",
       password: "",
-    }
+    };
   }
 
   handleSumbit(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.props
       .login(this.state)
-      .then(() => this.setState({ email: "", password: "" }))
+      .then(() => this.setState({ email: "", password: "" }));
   }
 
   handleChange(e) {
-    const { value, name } = e.target
+    const { value, name } = e.target;
 
-    this.setState({ [name]: value })
+    this.setState({ [name]: value });
   }
 
   loginForm() {
-    const { isLoading, error } = this.props
+    const { isLoading, error } = this.props;
     return (
       <form onSubmit={this.handleSumbit} className="login-form content">
         {error && (
@@ -65,11 +65,11 @@ class Admin extends Component {
           type="submit"
         />
       </form>
-    )
+    );
   }
 
   render() {
-    const { auth, resetSuccessMessage } = this.props
+    const { auth, resetSuccessMessage } = this.props;
     return (
       <>
         {auth.uid ? (
@@ -78,7 +78,7 @@ class Admin extends Component {
           this.loginForm()
         )}
       </>
-    )
+    );
   }
 }
 
@@ -86,9 +86,9 @@ const mapStateToProps = (state) => ({
   isLoading: state.auth.isLoading,
   auth: state.firebase.auth,
   error: state.auth.error,
-})
+});
 
 export default connect(mapStateToProps, {
   login,
   resetSuccessMessage,
-})(Admin)
+})(Admin);

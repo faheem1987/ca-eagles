@@ -1,11 +1,11 @@
-import React from "react"
-import { connect } from "react-redux"
-import { Link } from "react-router-dom"
-import Navbar from "react-bootstrap/Navbar"
-import Nav from "react-bootstrap/Nav"
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
-import { logout } from "../../store/login/login.actions"
-import IconImage from "../../assets/icon192x192.png"
+import { logout } from "../../store/login/login.actions";
+import IconImage from "../../assets/icon192x192.png";
 
 const Header = (props) => {
   return (
@@ -24,13 +24,13 @@ const Header = (props) => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  )
-}
+  );
+};
 
 const mapStateToProps = (state) => ({
   auth: state.firebase.auth,
-})
+});
 
 export default connect(mapStateToProps, {
   logout,
-})(Header)
+})(Header);

@@ -1,6 +1,12 @@
-import React, { Fragment } from "react"
+import React from "react";
 
-const FormInput = ({ handleChange, label, error, className, ...otherProps }) => (
+const FormInput = ({
+  handleChange,
+  label,
+  error,
+  className,
+  ...otherProps
+}) => (
   <div className="form-input-custom">
     {error && <span className="input-error">{error}</span>}
     <input
@@ -11,6 +17,6 @@ const FormInput = ({ handleChange, label, error, className, ...otherProps }) => 
       {...otherProps}
     />
   </div>
-)
+);
 
-export default FormInput
+export default FormInput;
