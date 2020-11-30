@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { Fragment } from "react"
 
-const FormInput = ({handleChange, label, ...otherProps}) => (
-  <div className="group">
-    <input 
-      type="text" 
-      className='form-input' 
-      onChange={handleChange} 
-      {...otherProps} 
+const FormInput = ({ handleChange, label, error, className, ...otherProps }) => (
+  <div className="form-input-custom">
+    {error && <span className="input-error">{error}</span>}
+    <input
+      className={className}
+      type="text"
+      onChange={handleChange}
+      placeholder={label}
+      {...otherProps}
     />
-    {label ? (
-      <label 
-        className={`${otherProps.value.length ? 'shrink' : '' } form-input-label`}>
-        {label}
-      </label>
-    ) : null}
   </div>
-);
+)
 
-export default FormInput;
+export default FormInput

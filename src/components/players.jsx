@@ -1,30 +1,29 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import Badge from './common/badge';
+import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import Badge from "./common/badge";
 
 const Players = (props) => {
-  const {playerInfo} = props;
+  const { playerInfo } = props;
   return (
     <div className="players-main content">
-      {
-        (playerInfo || []).map(({url, id}) => <Badge url={url} id={id} key={id} asLink={true}/>)
-      }
+      {(playerInfo || []).map(({ url, id }) => (
+        <Badge url={url} id={id} key={id} asLink />
+      ))}
     </div>
-    
-  )
-}
+  );
+};
 
-const mapStateToProps = state => {
-  return {
-    playerInfo: state.firestore.ordered.playerInfo
-  }
-}
+const mapStateToProps = (state) => ({
+  playerInfo: state.firestore.ordered.playerInfo,
+});
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{
-    collection: 'playerInfo',
-  }])
+  firestoreConnect([
+    {
+      collection: "playerInfo",
+    },
+  ])
 )(Players);

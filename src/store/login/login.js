@@ -1,34 +1,34 @@
 const initialState = {
   isLoading: false,
   error: null,
-};
+}
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN_REQUEST': {
+    case "LOGIN_REQUEST": {
       return {
         ...state,
         isLoading: true,
         error: null,
-      };
+      }
     }
-    case 'LOGIN_SUCCESS': {
+    case "LOGIN_SUCCESS": {
       return {
         ...state,
         isLoading: false,
         error: null,
-      };
+      }
     }
-    case 'LOGIN_FAILURE': {
+    case "LOGIN_FAILURE": {
       return {
         ...state,
         isLoading: false,
-        error: 'Login failed',
-      };
+        error: "Login failed",
+      }
     }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default loginReducer;
+export default loginReducer

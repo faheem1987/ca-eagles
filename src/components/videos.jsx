@@ -1,41 +1,43 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import React from "react"
+import { connect } from "react-redux"
+import { firestoreConnect } from "react-redux-firebase"
+import { compose } from "redux"
 
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from "react-player/youtube"
 
 const Videos = (props) => {
-  const URL = (props.videos && props.videos[0].URL) || [];
+  const URL = (props.videos && props.videos[0].URL) || []
   return (
-    <section>
-      <h2>Latest Video</h2>
+    <section className="hp-videos content">
+      <h2 className="float-left">Latest Videos</h2>
+      <div className="float-right see-more" onClick={() => {}}>
+        See more
+      </div>
       <div className="videos-wrapper">
-      { URL.map( (u, i) => 
-        <ReactPlayer
-          className="video"
-          key={i} 
-          url={u} 
-          controls={true} 
-          width={"370px"}
-          height={"260px"}
-        /> ) }
-    </div>
+        {URL.map((u, i) => (
+          <ReactPlayer
+            className="video"
+            key={i}
+            url={u}
+            controls
+            width="390px"
+            height="290px"
+          />
+        ))}
+      </div>
     </section>
-    
   )
 }
 
-
-const mapStateToProps = state => {
-  return {
-    videos: state.firestore.ordered.videos
-  }
-}
+const mapStateToProps = (state) => ({
+  videos: state.firestore.ordered.videos,
+})
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{
-    collection: 'videos'
-  }])
-)(Videos);
+  firestoreConnect([
+    {
+      collection: "videos",
+    },
+  ])
+)(Videos)

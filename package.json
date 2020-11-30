@@ -4,16 +4,11 @@
   "description": "California eagles cricket team",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint --ext js src --fix"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "semi": 0,
-      "no-console": 0
-    }
+    "start": "react-scripts-with-stylus start src/styles/index.styl",
+    "build": "react-scripts-with-stylus build src/styles/index.styl",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "pretty-quick --staged"
   },
   "author": "Faheem Ahmad",
   "license": "ISC",
@@ -22,25 +17,22 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.1",
+    "create-react-app-stylus": "^1.1.1",
     "css-loader": "^5.0.1",
-    "eslint": "^7.14.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-flowtype": "^5.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.3.0",
     "url-loader": "^4.1.1",
-    "webpack": "^5.6.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
@@ -61,8 +53,21 @@
     "react-redux-firebase": "^2.2.4",
     "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.1",
     "redux": "^4.0.5",
     "redux-firestore": "^0.14.0",
     "redux-thunk": "^2.3.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

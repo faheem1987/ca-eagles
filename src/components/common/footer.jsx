@@ -1,5 +1,5 @@
-import React from 'react';
+import React from "react"
 
-const Footer = () => <footer className="footer">Footer placeholder</footer>;
+const Footer = () => <footer className="footer">Footer placeholder</footer>
 
-export default Footer;
+export default Footer

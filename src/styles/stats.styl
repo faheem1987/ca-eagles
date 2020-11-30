@@ -1,15 +1,21 @@
 .stats {
 
+  .player-team-stats-wrapper {
+    background: #c31010d1;
+  }
+
   .player-team-stats {
     display: flex;
-    flex-direction: row wrap;  
+    flex-flow: row wrap;  
   }
 
   .badges-wrapper {
-    background: #ac23cea6
+    //background: #ac23cea6
     padding: 20px 30px;
+    position: relative;
+
     h3{
-      text-align: center;
+      text-align: left;
     }
     display: flex;
     flex-direction: column;
@@ -40,9 +46,9 @@
     margin-top: 20px;
 
     li {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       img {
-        margin-right: 80px;
+        margin-right: 20px;
         border-radius: 50px;  
       }
     }
@@ -55,7 +61,8 @@
     .date-url {
       font-size: 12px;
       padding: 0 30px;
-      margin-left: 20px;
+      margin: -10px 20px;
+
     }
   }
 
@@ -65,5 +72,20 @@
     text-overflow: ellipsis;
     width: 222px;
     display: inline-block;
+  }
+
+  .see-more.results {
+    position: absolute;
+    top: -2px;
+    right: 48px;
+    font-size: 12px; 
+  }
+
+  .report {
+    height: 200px;
+  }
+
+  .match-result li {
+    margin-bottom: 15px;
   }
 }

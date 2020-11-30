@@ -1,0 +1,500 @@
+.ca-eagles {
+  background-image: url("../assets/bg.png");
+  background-size: cover;
+  color: #fff;
+  height: 100%;
+}
+.ca-eagles section {
+  margin-top: 60px !important;
+}
+.ca-eagles .content-wrapper {
+  margin-bottom: 40px;
+  min-height: 100vh;
+  top: 100px;
+  position: relative;
+  margin-bottom: 180px;
+}
+.ca-eagles .content {
+  padding: 20px 10px;
+  width: 1230px;
+  margin: auto;
+}
+.ca-eagles .content section {
+  margin: 40px 0;
+}
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  background: #411075;
+  color: #fff;
+  padding: 8px 70px 8px;
+  font-weight: 300;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+.header .logo {
+  margin-left: 54px;
+}
+.header img {
+  width: 70px;
+  height: 60px;
+  border-radius: 50%;
+}
+.header .links-wrapper a {
+  padding: 0 20px;
+}
+.header .links-wrapper #basic-nav-dropdown {
+  color: #fff !important;
+}
+.header .links-wrapper .dropdown-menu a {
+  color: #000;
+  outline: none;
+  display: block;
+}
+.footer {
+  height: 78px;
+  background: #000;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+}
+.home-carousel {
+  width: 100%;
+  height: 700px;
+}
+.home-carousel .carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+.stats .player-team-stats-wrapper {
+  background: rgba(195,16,16,0.82);
+}
+.stats .player-team-stats {
+  display: flex;
+  flex-flow: row wrap;
+}
+.stats .badges-wrapper {
+  padding: 20px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  width: 100%;
+  margin-right: 68px;
+}
+.stats .badges-wrapper h3 {
+  text-align: left;
+}
+.stats .badges-wrapper .badge img {
+  width: 100%;
+  height: 200px;
+  border-radius: 20px;
+}
+.stats .badges-wrapper:nth-child(3n+3) {
+  margin-right: 0 !important;
+}
+.stats .player,
+.stats .match-result {
+  max-width: 370px;
+  width: 100%;
+  background: #0f218b;
+  border-radius: 20px;
+  padding: 20px 40px;
+  font-size: 18px;
+  list-style: none;
+  margin-top: 20px;
+}
+.stats .player li,
+.stats .match-result li {
+  margin-bottom: 10px;
+}
+.stats .player li img,
+.stats .match-result li img {
+  margin-right: 20px;
+  border-radius: 50px;
+}
+.stats .match-result {
+  font-size: 16px;
+  padding: 20px;
+}
+.stats .match-result .date-url {
+  font-size: 12px;
+  padding: 0 30px;
+  margin: -10px 20px;
+}
+.stats .winner {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 222px;
+  display: inline-block;
+}
+.stats .see-more.results {
+  position: absolute;
+  top: -2px;
+  right: 48px;
+  font-size: 12px;
+}
+.stats .report {
+  height: 200px;
+}
+.stats .match-result li {
+  margin-bottom: 15px;
+}
+.form-input-custom .input-error {
+  color: #f00;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.form-input-custom input[type='password'] {
+  letter-spacing: 0.3em;
+}
+.form-input-custom input[type='file'] {
+  border: none;
+}
+.form-input-custom input {
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px 10px 10px 20px;
+  color: #808080;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.form-input-custom input:focus {
+  outline: none;
+}
+.custom-button-wrapper {
+  text-align: center;
+}
+.custom-button-wrapper .custom-button {
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+.videos-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding: 10px 0;
+  overflow: hidden;
+  clear: both;
+}
+.videos-wrapper .video {
+  padding: 10px;
+  margin-right: 20px;
+}
+.videos-wrapper .video:nth-child(3n+3) {
+  margin-right: 0 !important;
+}
+.admin-form .consoles {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 40px;
+}
+.admin-form .console {
+  width: 272px;
+  height: 300px;
+  border-radius: 8px;
+  margin-right: 40px;
+  background: #fff;
+  text-align: center;
+  position: relative;
+}
+.admin-form .console:nth-child(3n+4) {
+  margin-right: 0 !important;
+}
+.admin-form .form-type {
+  color: #000;
+  vertical-align: middle;
+  line-height: 300px;
+  font-size: 18px;
+}
+.admin-form .uploader {
+  text-align: left;
+  position: absolute;
+  background: #fff;
+  margin-top: 40px;
+  min-width: 600px;
+  padding: 40px 20px;
+  width: 100%;
+  right: -60%;
+  top: 138px;
+  z-index: 1;
+  -webkit-box-shadow: -2px 0px 24px 0px rgba(0,0,0,0.72);
+  box-shadow: -2px 0px 24px 0px rgba(0,0,0,0.72);
+}
+.admin-form .uploader .react-datepicker-wrapper,
+.admin-form .uploader .react-datepicker__input-container {
+  width: 100%;
+}
+.admin-form .uploader .react-datepicker-wrapper input,
+.admin-form .uploader .react-datepicker__input-container input {
+  width: 100%;
+}
+.admin-form .match-results-uploader {
+  padding: 45px;
+}
+.admin-form .match-results-uploader h4 {
+  color: #000;
+  margin-bottom: 20px;
+}
+.admin-form .Dropdown-root input,
+.admin-form .react-datepicker-wrapper input {
+  border: 1px solid #ccc;
+}
+.admin-form .file-uploader {
+  color: #000;
+  font-size: 15px;
+  letter-spacing: -1px;
+  border-radius: 20px;
+}
+.admin-form .file-uploader:focus {
+  outline: none;
+  box-shadow: none;
+}
+.admin-form .p-uploder {
+  width: 200px;
+}
+.admin-form .fa-times {
+  color: #000;
+  font-size: 30px;
+}
+.admin-form .login-form {
+  background: #fff;
+  padding: 100px 80px;
+  border-radius: 8px;
+}
+.admin-form .input-picker {
+  width: 100%;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px 10px 10px 20px;
+  color: #808080;
+  border: 1px solid #ccc;
+}
+.admin-form .input-picker:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em;
+}
+.admin-form .input-picker:focus:before,
+.admin-form .input-picker:valid:before {
+  content: "";
+}
+.admin-form .players-ranking-form input {
+  margin: 20px 0;
+}
+.players-main {
+  display: flex;
+  flex-flow: row wrap;
+}
+.players-main .badge {
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+}
+.players-main .badge img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.players-main .badge:nth-child(4n + 4) {
+  margin-right: 0;
+}
+.profile .profile-info {
+  display: flex;
+  flex-flow: row wrap;
+  background: #151313;
+  padding: 70px;
+}
+.profile .profile-info img {
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
+}
+.profile .profile-info .dob-player-style {
+  display: flex;
+  flex-flow: column;
+  margin-left: 50px;
+  width: 400px;
+  max-width: 100%;
+  font-size: 18px;
+}
+.profile .profile-info .dob-player-style div {
+  margin-bottom: 40px;
+}
+.profile .profile-info .border-bottom {
+  border-bottom: 1px solid #fff;
+  overflow: auto;
+  margin: 0;
+  font-size: 12px;
+}
+.Dropdown-root {
+  position: relative;
+  margin: 10px 0 20px 0 !important;
+  font-size: 18px;
+}
+
+.Dropdown-control {
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: grey;
+  cursor: default;
+  outline: none;
+  padding: 8px 52px 8px 20px;
+  transition: all 200ms ease;
+  margin: 0 !important;
+}
+
+.Dropdown-control:hover {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.Dropdown-arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5);
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0;
+}
+
+.is-open .Dropdown-arrow {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+
+.Dropdown-menu {
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Dropdown-menu .Dropdown-group > .Dropdown-title {
+  padding: 8px 10px;
+  color: rgba(51, 51, 51, 1);
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.Dropdown-option {
+  box-sizing: border-box;
+  color: rgba(51, 51, 51, 0.8);
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.Dropdown-option:last-child {
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.Dropdown-option:hover {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+.Dropdown-option.is-selected {
+  background-color: #f2f9fc;
+  color: #333;
+}
+
+.Dropdown-noresults {
+  box-sizing: border-box;
+  color: #ccc;
+  cursor: default;
+  display: block;
+  padding: 8px 10px;
+}
+
+body,
+ul {
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Shadows Into regular', cursive;
+  text-transform: uppercase;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+.f-icon {
+  margin-right: 20px;
+}
+.fa-thumbs-down {
+  color: #f00;
+}
+.fa-thumbs-up {
+  color: #008000;
+}
+input {
+  height: 42px !important;
+}
+textarea {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+label {
+  color: #000;
+}
+.hidden {
+  display: none;
+}
+.see-more {
+  cursor: pointer;
+}
+.Dropdown-control {
+  border-radius: 20px;
+  margin: 10px 0 20px;
+}
+.react-datepicker__input-container input {
+  border-radius: 20px;
+}
+input.danger {
+  border: 1px solid #f00 !important;
+}
+.danger .Dropdown-control {
+  border: 1px solid #f00 !important;
+}
+input {
+  margin: 10px 0;
+}

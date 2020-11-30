@@ -1,3 +1,4 @@
-const getProfile = (players, id) => (dispatch) => dispatch({ type: 'GET_PLAYER_BIO', players, id });
+const getProfile = (players, id) => (dispatch) =>
+  dispatch({ type: "GET_PLAYER_BIO", players, id })
 
-export default getProfile;
+export default getProfile
