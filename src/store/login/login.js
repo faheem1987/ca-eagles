@@ -23,7 +23,7 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: "Login failed",
+        error: action.err.message || "Something went wrong. Pleas try again!",
       };
     }
     default:

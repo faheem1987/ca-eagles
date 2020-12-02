@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
 import Dropdown from "react-dropdown";
 import AlertSection from "../common/alert";
 import FormInput from "../common/form-input";
@@ -10,54 +8,55 @@ import CustomButton from "../common/custom-button";
 import { postRankings } from "../../store/form/form.actions";
 
 const PlayerRankingsForm = (props) => {
-  const {
-    batters,
-    bowlers,
-    postRankings,
-    isLoading,
-    successMessage,
-    error,
-  } = props;
-  const rankingList = ["1", "2", "3", "4", "5"];
-  const [fullname, setFullname] = useState("");
-  const [rankings, setRankings] = useState(rankingList);
-  const [rankingDefaultValue, setRankingDefaultValue] = useState(
-    "Select ranking"
-  );
-  const [typeDefaultValue, setTypeDefaultValue] = useState(
-    "Select bowler/batman"
-  );
+  const { postRankings, isLoading, successMessage, error } = props;
 
-  const handleChange = (e, func) => {
-    const { value } = e.target;
-    func(value);
+  const [state, setState] = useState({
+    fullname: "",
+    type: "",
+    wickets: "",
+    runs: "",
+  });
+
+  const handleChange = (v, feild) => {
+    setState({
+      ...state,
+      [feild]: v,
+    });
   };
 
-  const onChange = (option, ranking = null) => {
-    const v = option.value;
-    if (!ranking) {
-      const updateRankings = (type) =>
-        (rankingList || []).filter(
-          (r) => !(type || []).some(({ ranking }) => r === ranking)
-        );
-      v === "Batsman"
-        ? setRankings(updateRankings(batters))
-        : setRankings(updateRankings(bowlers));
-    }
-
-    return ranking ? setRankingDefaultValue(v) : setTypeDefaultValue(v);
+  const onChange = (v) => {
+    setState({
+      ...state,
+      type: v,
+    });
   };
 
   const handleSumbit = (e) => {
     e.preventDefault();
-    postRankings(
-      { fullname, ranking: rankingDefaultValue },
-      typeDefaultValue
-    ).then(() => {
-      setFullname("");
-      setRankingDefaultValue("Select ranking");
-      setTypeDefaultValue("Select bowler/batman");
+    postRankings({
+      ...state,
     });
+    // postRankings(
+    //   { fullname, ranking: rankingDefaultValue },
+    //   typeDefaultValue
+    // ).then(() => {
+    //   setFullname("");
+    //   setRankingDefaultValue("Select ranking");
+    //   setTypeDefaultValue("Select bowler/batman");
+    // });
+  };
+  const { fullname, type, runs, wickets } = state;
+  const isBatsman = type === "Batsman";
+
+  const getLabel = () => {
+    if (!type) {
+      return "Enter runs/wickets";
+    }
+    if (type === "Batsman") {
+      return "Enter total runs scored in current series";
+    }
+
+    return "Enter total wickets taken in current series";
   };
 
   return (
@@ -70,23 +69,23 @@ const PlayerRankingsForm = (props) => {
         type="text"
         name="fullname"
         value={fullname}
-        handleChange={(e) => handleChange(e, setFullname)}
+        handleChange={({ target }) => handleChange(target.value, "fullname")}
         label="Player Full Name"
         required
       />
       <Dropdown
-        value={typeDefaultValue}
+        value={type}
         options={["Batsman", "Bowler"]}
-        onChange={(option) => onChange(option)}
-        placeholder="Select bowler/batman123"
+        onChange={(option) => onChange(option.value)}
+        placeholder="Select bowler/batman"
       />
-
-      <Dropdown
-        value={rankingDefaultValue}
-        disabled={typeDefaultValue === "Select bowler/batman"}
-        options={rankings}
-        onChange={(option) => onChange(option, "ranking")}
-        placeholder="Select ranking123"
+      <FormInput
+        type="text"
+        value={isBatsman ? runs : wickets}
+        handleChange={({ target }) =>
+          handleChange(target.value, isBatsman ? "runs" : "wickets")
+        }
+        label={getLabel()}
       />
 
       <CustomButton text="Save" isLoading={isLoading} type="submit" />
@@ -95,23 +94,11 @@ const PlayerRankingsForm = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  batters: state.firestore.ordered.battersRanking,
-  bowlers: state.firestore.ordered.bowlersRanking,
   isLoading: state.formReducer.isLoading,
   successMessage: state.formReducer.successMessage,
   error: state.formReducer.error,
 });
 
-export default compose(
-  connect(mapStateToProps, {
-    postRankings,
-  }),
-  firestoreConnect([
-    {
-      collection: "battersRanking",
-    },
-    {
-      collection: "bowlersRanking",
-    },
-  ])
-)(PlayerRankingsForm);
+export default connect(mapStateToProps, {
+  postRankings,
+})(PlayerRankingsForm);

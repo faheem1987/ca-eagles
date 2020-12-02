@@ -17,10 +17,13 @@ const Header = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto links-wrapper">
           <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
           <Link to="/players">Players</Link>
           <Link to="/gallery">Gallery</Link>
+          <Link to="/results">Results</Link>
+          <Link to="/schedule">Schedule</Link>
           <Link to="/admin">Admin</Link>
-          {props.auth.uid && <a onClick={props.logout}>Logout</a>}
+          {props.auth.uid && <button onClick={props.logout}>Logout</button>}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

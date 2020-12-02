@@ -15,7 +15,7 @@ export const uploadVideo = (url) => (dispatch, getState, { getFirestore }) => {
     .catch(() => dispatch({ type: types.UPLOAD_VIDEO_FAILURE }));
 };
 
-export const postRankings = (ranking, type) => (
+export const postRankings = (stats, type) => (
   dispatch,
   getState,
   { getFirestore }
@@ -23,10 +23,10 @@ export const postRankings = (ranking, type) => (
   dispatch({ type: types.POST_RANKING_REQUEST });
   const firestore = getFirestore();
   const collectionType =
-    type === "Bowler" ? "bowlersRanking" : "battersRanking";
+    stats.type === "Bowler" ? "bowlersRanking" : "battersRanking";
   return firestore
     .collection(collectionType)
-    .add({ ...ranking, createdAt: new Date() })
+    .add({ ...stats, createdAt: new Date() })
     .then(() => dispatch({ type: types.POST_RANKING_SUCCESS }))
     .catch((err) => dispatch({ type: types.POST_RANKING_FAILURE, err }));
 };

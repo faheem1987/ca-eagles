@@ -17,14 +17,31 @@ const PlayerUploader = (props) => {
     country: helperObj,
     bio: helperObj,
     image: helperObj,
+    battingStyle: helperObj,
+    bowlingStyle: helperObj,
     globalError: null,
+    showBowlingStyle: false,
   });
 
   const validator = () => {
-    const { playerName, skill, country, image, DOB } = state;
-    return [playerName, skill, country, image, DOB].filter(
-      (feild) => !feild.value
-    );
+    const {
+      playerName,
+      skill,
+      country,
+      image,
+      DOB,
+      battingStyle,
+      bowlingStyle,
+    } = state;
+    return [
+      playerName,
+      skill,
+      country,
+      image,
+      DOB,
+      battingStyle,
+      bowlingStyle,
+    ].filter((feild) => !feild.value);
   };
 
   const updateState = (updatedState) =>
@@ -38,7 +55,7 @@ const PlayerUploader = (props) => {
     const hasError = validator();
     const updatedState = {};
     if (hasError.length) {
-      return Object.keys(state).forEach((key) => {
+      return (Object.keys(state) || []).forEach((key) => {
         if (key === "bio" || key === "globalError") return null;
         if (!state[key].value) {
           updatedState[key] = {
@@ -56,7 +73,16 @@ const PlayerUploader = (props) => {
       globalError: null,
     });
 
-    const { playerName, DOB, skill, country, bio, image } = state;
+    const {
+      playerName,
+      DOB,
+      skill,
+      country,
+      bio,
+      image,
+      battingStyle,
+      bowlingStyle,
+    } = state;
 
     return uploadImage({
       playerName: playerName.value,
@@ -65,16 +91,9 @@ const PlayerUploader = (props) => {
       country: country.value,
       image: image.value,
       bio: bio.value,
+      bowlingStyle: bowlingStyle.value,
+      battingStyle: battingStyle.value,
     });
-
-    // .then(() => {
-    //   setPlayerName("");
-    //   setDOB("");
-    //   setSkill("");
-    //   setCountry("");
-    //   setBio("");
-    //   setImage("");
-    // });
   };
 
   const handleChange = (v, stateType, isValidate) => {
@@ -88,9 +107,22 @@ const PlayerUploader = (props) => {
     return setState({
       ...state,
       [stateType]: { value: v, error: null },
+      ...((v === "Bowler" || v === "All-rounder") && {
+        showBowlingStyle: true,
+      }),
     });
   };
-  const { playerName, DOB, skill, country, image, globalError } = state;
+  const {
+    playerName,
+    DOB,
+    skill,
+    country,
+    image,
+    battingStyle,
+    bowlingStyle,
+    showBowlingStyle,
+    globalError,
+  } = state;
   return (
     <form className="uploader" onSubmit={onSubmit}>
       {(successMessage || error || globalError) && (
@@ -121,16 +153,37 @@ const PlayerUploader = (props) => {
       <Dropdown
         className={skill.error ? "danger" : ""}
         value={skill.value}
-        options={["Batsman", "Bowler", "Alrounder"]}
+        options={["Batsman", "Bowler", "All-rounder"]}
         onChange={({ value }) => {
           handleChange(value, "skill");
         }}
         placeholder="Select bowler/batman"
       />
       <Dropdown
+        className={battingStyle.error ? "danger" : ""}
+        value={battingStyle.value}
+        options={["Right handed batter", "Left handed batter"]}
+        onChange={({ value }) => {
+          handleChange(value, "battingStyle");
+        }}
+        placeholder="Select batting style"
+      />
+      {showBowlingStyle && (
+        <FormInput
+          className={`${bowlingStyle.error ? "danger" : ""}`}
+          type="text"
+          name="bowling style"
+          value={bowlingStyle.value}
+          label="Enter bowling style"
+          onChange={({ target }) => {
+            handleChange(target.value, "bowlingStyle");
+          }}
+        />
+      )}
+      <Dropdown
         className={country.error ? "danger" : ""}
         value={country.value}
-        options={["India", "Pakistan", "Westindies", "Srilanka"]}
+        options={["India", "Pakistan", "Westindies", "Srilanka", "USA"]}
         onChange={({ value }) => {
           handleChange(value, "country");
         }}

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { compose } from "redux";
 import Badge from "./common/badge";
-
 class Stats extends Component {
   constructor(props) {
     super(props);
@@ -14,17 +14,23 @@ class Stats extends Component {
   }
 
   players(p) {
-    return (p || []).map((b, index) => (
-      <li key={index}>
-        <img src="http://placekitten.com/30/30" alt="cat" />
-        {b.fullname}
-      </li>
-    ));
+    return (p || []).map((b, index) => {
+      if (index <= 4) {
+        return (
+          <li key={index}>
+            <img src="http://placekitten.com/30/30" alt="cat" />
+            <span className="stat-name">{b.fullname}</span>
+            <span>{b.runs}</span>
+          </li>
+        );
+      }
+      return null;
+    });
   }
 
   render() {
     const { batters, bowlers, results } = this.props;
-    const inCAEaglesWinner = (w) => w === "CA eagles";
+    const isCAEaglesWinner = (w) => w === "CA eagles";
     return (
       <section className="stats">
         <h2 className="content">Player Stats</h2>
@@ -33,17 +39,17 @@ class Stats extends Component {
             <div className="badges-wrapper">
               <h3>Most runs</h3>
               <Badge url="http://placekitten.com/400/400" />
-              <ul className="player report">{this.players(batters)}</ul>
+              <ul className="batters-stats report">{this.players(batters)}</ul>
             </div>
             <div className="badges-wrapper">
               <h3>Most wickets</h3>
               <Badge url="http://placekitten.com/400/400" />
-              <ul className="player report">{this.players(bowlers)}</ul>
+              <ul className="bowler-stats report">{this.players(bowlers)}</ul>
             </div>
             <div className="badges-wrapper">
-              <div className="see-more results" onClick={() => {}}>
+              <Link to="/results" className="see-more results">
                 See more
-              </div>
+              </Link>
               <h3>Recent results</h3>
               <Badge url="http://placekitten.com/400/400" />
               <ul className="match-result report">
@@ -52,7 +58,7 @@ class Stats extends Component {
                     <FontAwesomeIcon
                       className="f-icon"
                       icon={
-                        inCAEaglesWinner(r.winner) ? faThumbsUp : faThumbsDown
+                        isCAEaglesWinner(r.winner) ? faThumbsUp : faThumbsDown
                       }
                     />
                     <span className="winner">
@@ -83,9 +89,7 @@ class Stats extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  batters: (state.firestore.ordered.battersRanking || [])
-    .slice()
-    .sort((a, b) => a.ranking - b.ranking),
+  batters: state.firestore.ordered.battersRanking,
   bowlers: (state.firestore.ordered.bowlersRanking || [])
     .slice()
     .sort((a, b) => a.ranking - b.ranking),

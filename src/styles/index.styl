@@ -1,15 +1,19 @@
-@require "./home";
-@require "./header";
-@require "./footer";
+@require "./pages/home";
+@require "./common/header";
+@require "./common/footer";
 @require "./home-carousel";
 @require "./stats";
-@require "./form-input";
-@require "./custom-button";
+@require "./common/form-input";
+@require "./common/custom-button";
 @require "./videos";
-@require "./admin-form";
-@require "./players";
-@require "./profile";
+@require "./admin";
+@require "./pages/players";
+@require "./pages/profile";
+@require "./pages/about";
+@require "./pages/schedule";
+@require "./pages/results";
 @require "./dropdown.css";
+
 
 body, ul {
   font-family: 'Open Sans', sans-serif;
@@ -28,9 +32,17 @@ ul {
 }
 
 a {
+  outline : none;
   text-decoration: none;
   color: #fff;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: #fff;
+  }
 }
+
 
 li {
   margin: 0;

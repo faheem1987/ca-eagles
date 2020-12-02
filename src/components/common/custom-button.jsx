@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 
 const CustomButton = ({ isLoading = false, text, type, className = "" }) => (
@@ -16,5 +17,12 @@ const CustomButton = ({ isLoading = false, text, type, className = "" }) => (
     </Button>
   </div>
 );
+
+CustomButton.propTypes = {
+  isLoading: PropTypes.bool,
+  text: PropTypes.string,
+  type: PropTypes.string,
+  className: PropTypes.string,
+};
 
 export default CustomButton;

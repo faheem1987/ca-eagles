@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import PlayerUploader from "../uploaders/player-uploader";
 import PlayersRankingForm from "../uploaders/player-rankings-form";
 import VideoUpload from "../uploaders/video-upload";
 import MatchResults from "../uploaders/match-results";
 
-const AdminForm = (props) => {
+const AdminConsole = (props) => {
   const [index, setIndex] = useState(null);
   const showForm = (i) => {
     props.resetSuccessMessage();
     return index === i ? setIndex(null) : setIndex(i);
   };
   return (
-    <div className="admin-form content">
+    <div className="admin-console">
       <h2>Admin Console</h2>
       <div className="consoles">
         <div className="console">
@@ -62,4 +63,8 @@ const AdminForm = (props) => {
   );
 };
 
-export default AdminForm;
+AdminConsole.propTypes = {
+  resetSuccessMessage: PropTypes.func,
+};
+
+export default AdminConsole;

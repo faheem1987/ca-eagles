@@ -4,8 +4,14 @@ export const login = (credentials) => (dispatch, getState, { getFirebase }) => {
   return firebase
     .auth()
     .signInWithEmailAndPassword(credentials.email, credentials.password)
-    .then(() => dispatch({ type: "LOGIN_SUCCESS" }))
-    .catch((err) => dispatch({ type: "LOGIN_FAILURE", err }));
+    .then(() => {
+      return dispatch({ type: "LOGIN_SUCCESS" });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: "LOGIN_FAILURE", err });
+      return Promise.reject(err);
+    });
 };
 
 export const logout = () => (dispatch, getState, { getFirebase }) => {
