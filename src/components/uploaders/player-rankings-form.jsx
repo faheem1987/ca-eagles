@@ -36,14 +36,6 @@ const PlayerRankingsForm = (props) => {
     postRankings({
       ...state,
     });
-    // postRankings(
-    //   { fullname, ranking: rankingDefaultValue },
-    //   typeDefaultValue
-    // ).then(() => {
-    //   setFullname("");
-    //   setRankingDefaultValue("Select ranking");
-    //   setTypeDefaultValue("Select bowler/batman");
-    // });
   };
   const { fullname, type, runs, wickets } = state;
   const isBatsman = type === "Batsman";

@@ -15,14 +15,7 @@ const Videos = (props) => {
       </div>
       <div className="videos-wrapper">
         {URL.map((u, i) => (
-          <ReactPlayer
-            className="video"
-            key={i}
-            url={u}
-            controls
-            width="390px"
-            height="290px"
-          />
+          <ReactPlayer className="video" key={i} url={u} controls />
         ))}
       </div>
     </section>

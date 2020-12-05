@@ -1,21 +1,25 @@
 .profile {
+  font-size: 75%;
 
   .bio {
-    font-family: 'Texturina', serif;
-    font-size: 20px;
+    font-size: 110%
     max-width: 1000px;
     text-align: justify;
-    margin: 40px auto 0;
+    padding: 10px;
   }
 
   .profile-info {
     display: flex;
     flex-flow: row wrap;
     background: #151313;
-    padding: 70px;
+
+    h2 {
+      font-size: 160%;
+      text-align: center;
+    }
 
     img {
-      width: 300px;
+      width: 100%
       height: 200px;
       border-radius: 8px;
     }
@@ -23,10 +27,10 @@
     .dob-player-style {
       display: flex;
       flex-flow: column;
-      margin-left: 50px;
       width: 400px;
       max-width: 100%;
-      font-size: 18px;
+      font-size: 150%;
+      padding: 20px;
 
       div {
         margin-bottom: 40px;
@@ -37,7 +41,33 @@
       border-bottom: 1px solid #fff;
       overflow: auto;
       margin: 0;
-      font-size: 12px;
+      font-size: 60%;
     }
   }
+
+  @media only screen and (min-width: 600px) {
+    .profile-info {
+      img {
+        width: 300px;
+      }
+
+      h2 {
+        font-size: 160%;
+        text-align: left;
+      }
+    }
+
+    .bio {
+      margin: 40px auto 0;
+    }
+
+    .profile-info {
+      padding: 70px;
+    }
+
+    .dob-player-style {
+      margin-left: 50px;
+      padding: 0;
+    }
+  } 
 }

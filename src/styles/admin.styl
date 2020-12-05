@@ -1,6 +1,5 @@
-
-
 .admin-console {
+
   .consoles {
     display: flex;
     flex-flow: row wrap; 
@@ -8,10 +7,10 @@
   }
 
   .console {
-    width: 272px;
-    height: 300px;
+    width: 100%;
+    height: 265px;
     border-radius: 8px;
-    margin-right: 40px;
+    margin: 0 0 40px 0;
     background: #fff;
     text-align: center;
     position: relative;
@@ -24,23 +23,14 @@
   .form-type {
     color: #000;
     vertical-align: middle;
-    line-height: 300px;
+    line-height: 265px;
     font-size: 18px;  
   }
 
   .uploader {
-    text-align: left;
-    position: absolute;
-    background: #fff;
-    margin-top: 40px;
-    min-width: 600px;
-    padding: 40px 20px;
-    width: 100%;
-    right: -60%;
-    top: 138px;
-    z-index: 1;
-    -webkit-box-shadow: -2px 0px 24px 0px rgba(0,0,0,0.72); 
-    box-shadow: -2px 0px 24px 0px rgba(0,0,0,0.72);
+    textarea {
+      width: 100%;
+    }
 
     .react-datepicker-wrapper,
     .react-datepicker__input-container {
@@ -53,8 +43,6 @@
   }
 
   .match-results-uploader {
-    padding: 45px;
-
     h4 {
       color: #000;
       margin-bottom: 20px;
@@ -93,38 +81,34 @@
     font-size: 30px;
   }
 
-  .input-picker {
-    width: 100%;
-    border-radius: 20px;
-    font-size: 18px;
-    padding: 10px 10px 10px 20px;
-    color: grey;
-    border: 1px solid #ccc;
-    // margin: 10px 0;
-
-
-    &:before {
-      content: attr(placeholder) !important;
-      color: #aaa;
-      margin-right: 0.5em;
-    }
-
-    &:focus:before,
-    &:valid:before {
-      content: "";
-    }
-  }
-
   .players-ranking-form {
     input {
       margin: 20px 0;
     }
   }
+
+  @media only screen and (min-width: 600px) {
+    .console {
+      width: 265px;
+      margin: 0 40px 40px 0;
+    }
+
+    .uploader {
+      .react-datepicker-wrapper,
+      .react-datepicker__input-container {
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  } 
 }
 
 .login-form {
   background: #fff;
-  padding: 50px 180px;
+  padding: 40px 20px;
   border-radius: 8px; 
 
   h4 {
@@ -134,5 +118,30 @@
 
   .form-input-custom {
     margin-bottom: 40px;
+  }
+
+  @media only screen and (min-width: 600px) {
+    padding: 50px 180px;
+  } 
+}
+
+.input-picker {
+  width: 100%;
+  border-radius: 20px;
+  font-size: 18px;
+  padding: 10px 10px 10px 20px;
+  color: grey;
+  border: 1px solid #ccc;
+
+
+  &:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+
+  &:focus:before,
+  &:valid:before {
+    content: "";
   }
 }

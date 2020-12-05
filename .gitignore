@@ -1,3 +1,21 @@
-node_modules
+# OS generated files #
+######################
+.DS_Store
 .DS_Store
 src/.DS_Store
+
+node_modules
+
+public/index.html
+.firebase/
+.firebaserc
+build/
+database.rules.json
+dist/
+functions/
+public/static/
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
+index.css

@@ -1,30 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 import Carousel from "react-bootstrap/Carousel";
 
-const HomeCarousel = () => (
+const HomeCarousel = (props) => (
   <Carousel className="home-carousel">
-    <Carousel.Item>
-      <img
-        className="d-block w-100"
-        src="https://picsum.photos/1000/600"
-        alt="First slide"
-      />
-    </Carousel.Item>
-    <Carousel.Item>
-      <img
-        className="d-block w-100"
-        src="https://picsum.photos/seed/picsum/1000/600"
-        alt="Third slide"
-      />
-    </Carousel.Item>
-    <Carousel.Item>
-      <img
-        className="d-block w-100"
-        src="https://picsum.photos/id/237/1000/600"
-        alt="Third slide"
-      />
-    </Carousel.Item>
+    {(props.images || []).map(({ url }, i) => (
+      <Carousel.Item key={i}>
+        <img src={url} alt="First slide" />
+      </Carousel.Item>
+    ))}
   </Carousel>
 );
 
-export default HomeCarousel;
+const mapStateToProps = (state) => ({
+  images: state.firestore.ordered.carouselImages,
+});
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    {
+      collection: "carouselImages",
+    },
+  ])
+)(HomeCarousel);

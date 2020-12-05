@@ -31,7 +31,7 @@ export const postRankings = (stats, type) => (
     .catch((err) => dispatch({ type: types.POST_RANKING_FAILURE, err }));
 };
 
-export const uploadImage = (playerBio) => (
+export const uploadPlayer = (playerBio) => (
   dispatch,
   getState,
   { getFirebase, getFirestore }
@@ -98,3 +98,40 @@ export const postMatchResult = (result) => (
 };
 
 export const resetSuccessMessage = () => ({ type: "RESET_SUCCESS_MESSAGE" });
+
+export const uploadCarouselImage = (image) => (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  dispatch({ type: types.UPLOAD_IMAGE_REQUEST });
+  const metadata = {
+    contentType: "image/jpeg",
+  };
+  const firebase = getFirebase();
+  const uploadTask = firebase
+    .storage()
+    .ref(`carouselImages/${image.name}`)
+    .put(image, metadata);
+  return uploadTask.on(
+    "state_changed",
+    (snapshot) =>
+      Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100),
+    () => dispatch({ type: types.UPLOAD_IMAGE_FAILURE }),
+    () =>
+      firebase
+        .storage()
+        .ref("carouselImages")
+        .child(image.name)
+        .getDownloadURL()
+        .then((url) => {
+          dispatch({ type: types.UPLOAD_IMAGE_SUCCESS });
+          const firestore = getFirestore();
+          // eslint-disable-next-line no-param-reassign
+          return firestore.collection("carouselImages").add({
+            url,
+            createdAt: new Date(),
+          });
+        })
+  );
+};

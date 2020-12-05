@@ -31,7 +31,6 @@ const MatchResults = (props) => {
 
   return (
     <form className="uploader match-results-uploader" onSubmit={onSubmit}>
-      <h4>BACA Winter 2020/2021</h4>
       {(successMessage || error) && (
         <AlertSection successMessage={successMessage} error={error} />
       )}

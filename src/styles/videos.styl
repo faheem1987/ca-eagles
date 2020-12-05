@@ -1,17 +1,44 @@
-.videos-wrapper {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  padding: 10px 0;
-  overflow: hidden;
-  clear: both;
+.hp-videos {
+  font-size: 75%;
+  padding: 10px;
 
-  .video {
-    padding: 10px;
-    margin-right: 20px;
+  h2 {
+    font-size: 180%;
+    margin: 40px 0 10px 0;
   }
 
-  .video:nth-child(3n+3) {
-    margin-right: 0 !important;
+  .see-more {
+    margin-top: 45px;
   }
+
+  .videos-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+    clear: both;
+
+    .video {
+      margin: 0 0 10px 0;
+      width: 100% !important;
+      height: 290px !important;
+    }
+
+    .video:nth-child(3n+3) {
+      margin-right: 0 !important;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    h2 {
+      margin: 20px 0 10px 0;
+    }
+
+    .videos-wrapper {
+      .video {
+        width: 390px !important;
+        margin-right: 20px;
+      }
+    }
+  } 
 }

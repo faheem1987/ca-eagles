@@ -3,9 +3,9 @@
   flex-flow: row wrap;
 
   .badge {
-    width: 300px;
+    width: 100%;
     height: 300px;
-    padding: 20px;
+    margin-bottom: 10px;
 
     img {
       width: 100%;
@@ -17,4 +17,10 @@
   .badge:nth-child(4n + 4) {
     margin-right: 0;
   }
+
+  @media only screen and (min-width: 600px) {
+    .badge {
+      width: 300px;
+    }
+  } 
 }

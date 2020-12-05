@@ -14,24 +14,37 @@
 @require "./pages/results";
 @require "./dropdown.css";
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 24px;
+  font-size: 20px;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body, ul {
-  font-family: 'Open Sans', sans-serif;
   padding: 0;
   margin: 0;
-  color: #fff;
 }
 
 h1,h2,h3,h4,h5,h5 {
-  font-family: 'Shadows Into regular', cursive;
+  font-family: 'Ubuntu', sans-serif;
   text-transform: uppercase;
+  font-size: 100%;
+}
+
+input {
+  font-size: 80%;
 }
 
 ul {
   list-style: none;
 }
 
-a {
+a,
+.links-wrapper .btn.btn-link {
   outline : none;
   text-decoration: none;
   color: #fff;
@@ -105,6 +118,18 @@ input.danger {
 
 input {
   margin: 10px 0;  
+}
+
+.file-uploader {
+  color: #424242;
+}
+
+.modal-header {
+  color: #424242;
+}
+
+textarea {
+  width: 100%;
 }
 
 

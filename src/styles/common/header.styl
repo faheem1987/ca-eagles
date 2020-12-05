@@ -1,62 +1,105 @@
 .header {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  // background: rgba(65,16,117,1)
-  background: #c31010d1;
+  background: rgb(195,16,16);
   color: #fff;
-  padding: 8px 70px 8px;
+  padding: 20px 0;
   font-weight: 400;
-  height: 100px;
   width: 100%;
   position: fixed;
   z-index: 1;
 
   .logo {
-    margin-left: 54px;
+    margin-left: 10px;
   }
+
   img {
-    width: 70px;
-    height: 60px;
+    width: 50px;
+    height: 40px;
     border-radius: 50%;
   }
 
   .links-wrapper {
+    background: #fff;
+    margin-top: 15px;
     a {
-      padding: 0 20px;
-      
-
-      &:after {
-        height: 3px;
-        display: block;
-        width: 30px;
-        background: #fff;
-        border-right: 1px #fff;
-        content: '';
-        position: absolute;
-        margin: 5px 10px;
-        margin: 0 aut0;
-        opacity: 0;
-      }
-
-      &:hover:after {
-        transition: all 1s;
-        opacity: 1;
-      }
+      margin: 10px 20px;
+      color: #424242;
     }
 
-    #basic-nav-dropdown {
-      color: #fff !important;
-    }
-
-    .dropdown-menu {
-      a {
-        color: #000
-        outline: none;
-        display: block;
-      }
+    .btn.btn-link {
+      padding: 0;
+      margin: 0;
     }
   }
+
+  @media only screen and (min-width: 600px) {
+    height: 100px;
+    padding: 8px 70px 8px;
+
+    .logo {
+      margin-left: 54px;
+    }
+
+    img {
+      width: 70px;
+      height: 60px;
+    }
+
+    .links-wrapper {
+      background: inherit;
+      margin-top: 0;
+      a,
+      .btn.btn-link {
+        margin: 0 20px;
+        color: #fff;
+        border-bottom: 2px solid transparent;
+        transition: border-bottom 0.5s;
+
+        &:hover {
+          border-bottom: 2px solid #fff;
+        }
+
+        // &:before {
+        //   height: 3px;
+        //   display: block;
+        //   width: 30px;
+        //   background: blue;
+        //   border-right: 1px #fff;
+        //   content: '';
+        //   position: absolute;
+        //   margin: 5px 10px;
+        //   opacity: 0;
+        // }
+
+        // &:after {
+        //   height: 3px;
+        //   display: block;
+        //   width: 30px;
+        //   background: #fff;
+        //   border-right: 1px #fff;
+        //   content: '';
+        //   position: absolute;
+        //   margin: 5px 10px;
+        //   opacity: 0;
+        // }
+
+        // &:hover:after {
+        //   transition: all 1s;
+        //   opacity: 1;
+        // }
+      }
+
+      #basic-nav-dropdown {
+        color: #fff !important;
+      }
+
+      .dropdown-menu {
+        a {
+          color: #000
+          outline: none;
+          display: block;
+        }
+      }
+    }
+  } 
 
 }

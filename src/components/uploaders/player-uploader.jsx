@@ -5,10 +5,10 @@ import CustomButton from "../common/custom-button";
 import AlertSection from "../common/alert";
 import FormInput from "../common/form-input";
 
-import { uploadImage } from "../../store/form/form.actions";
+import { uploadPlayer } from "../../store/form/form.actions";
 
 const PlayerUploader = (props) => {
-  const { uploadImage, successMessage, error, isLoading } = props;
+  const { uploadPlayer, successMessage, error, isLoading } = props;
   const helperObj = { value: "", error: null };
   const [state, setState] = useState({
     playerName: helperObj,
@@ -84,7 +84,7 @@ const PlayerUploader = (props) => {
       bowlingStyle,
     } = state;
 
-    return uploadImage({
+    return uploadPlayer({
       playerName: playerName.value,
       DOB: DOB.value,
       skill: skill.value,
@@ -224,5 +224,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  uploadImage,
+  uploadPlayer,
 })(PlayerUploader);

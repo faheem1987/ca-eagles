@@ -4,12 +4,16 @@ import PlayerUploader from "../uploaders/player-uploader";
 import PlayersRankingForm from "../uploaders/player-rankings-form";
 import VideoUpload from "../uploaders/video-upload";
 import MatchResults from "../uploaders/match-results";
+import Carousel from "../uploaders/carousel";
+import Modal from "react-bootstrap/Modal";
 
 const AdminConsole = (props) => {
   const [index, setIndex] = useState(null);
-  const showForm = (i) => {
+  const [title, setTitle] = useState("");
+  const toggleModal = (i, title) => {
     props.resetSuccessMessage();
-    return index === i ? setIndex(null) : setIndex(i);
+    setTitle(title);
+    return i ? setIndex(i) : setIndex(null);
   };
   return (
     <div className="admin-console">
@@ -18,47 +22,63 @@ const AdminConsole = (props) => {
         <div className="console">
           <div
             className="form-type"
-            onClick={() => showForm(1)}
+            onClick={() => toggleModal(1, "Add Player")}
             aria-hidden="true"
           >
-            Add player
+            Add Player
           </div>
-          {index === 1 && <PlayerUploader />}
         </div>
 
         <div className="console">
           <div
             className="form-type"
-            onClick={() => showForm(2)}
+            onClick={() => toggleModal(2, "Upload Players Ranking")}
             aria-hidden="true"
           >
-            Update players ranking
+            Upload Players Ranking
           </div>
-          {index === 2 && <PlayersRankingForm />}
         </div>
 
         <div className="console">
           <div
             className="form-type"
-            onClick={() => showForm(3)}
+            onClick={() => toggleModal(3, "Upload Match Result")}
             aria-hidden="true"
           >
-            Match result
+            Upload Match Result
           </div>
-          {index === 3 && <MatchResults />}
         </div>
 
         <div className="console">
           <div
             className="form-type"
-            onClick={() => showForm(4)}
+            onClick={() => toggleModal(4, "Upload Video")}
             aria-hidden="true"
           >
-            Upload video
+            Upload Video
           </div>
-          {index === 4 && <VideoUpload />}
+        </div>
+
+        <div className="console">
+          <div
+            className="form-type"
+            onClick={() => toggleModal(5, "Upload Carousel Image")}
+            aria-hidden="true"
+          >
+            Upload Carousel Image
+          </div>
         </div>
       </div>
+      <Modal show={!!index} onHide={toggleModal}>
+        <Modal.Header closeButton>{title}</Modal.Header>
+        <Modal.Body>
+          {index === 1 && <PlayerUploader />}
+          {index === 2 && <PlayersRankingForm />}
+          {index === 3 && <MatchResults />}
+          {index === 4 && <VideoUpload />}
+          {index === 5 && <Carousel />}
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
