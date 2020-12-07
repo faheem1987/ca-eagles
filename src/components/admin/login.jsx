@@ -99,7 +99,7 @@ const Login = (props) => {
         label="Password"
       />
       <CustomButton
-        className="btn btn-primary"
+        className="btn btn-primary login-btn"
         isLoading={isLoading}
         text="Sign in"
         type="submit"

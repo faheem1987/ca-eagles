@@ -20,8 +20,10 @@
 
     img {
       width: 100%
-      height: 200px;
+      height: 300px;
       border-radius: 8px;
+      object-fit: cover;
+      object-position: 60% 0%;
     }
 
     .dob-player-style {
@@ -35,6 +37,10 @@
       div {
         margin-bottom: 40px;
       }
+
+      .p-info {
+        font-size: 80%;
+      }
     }
 
     .border-bottom {
@@ -42,6 +48,25 @@
       overflow: auto;
       margin: 0;
       font-size: 60%;
+    }
+
+    .profile-icons {
+      display: flex;
+      flex-flow: column;
+      flex-grow: 1;
+      text-align: right; 
+      font-size: 300%;
+      flex-wrap: wrap-reverse;
+      
+      a {
+        color: red;
+        margin-bottom: 20px;
+      }
+
+      svg {
+        cursor pointer
+      }
+      
     }
   }
 
@@ -63,11 +88,11 @@
 
     .profile-info {
       padding: 70px;
-    }
 
-    .dob-player-style {
-      margin-left: 50px;
-      padding: 0;
+      .dob-player-style {
+        padding: 0;
+        margin-left: 150px;
+      }
     }
   } 
 }

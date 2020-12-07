@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { FaYoutube, FaFacebook } from "react-icons/fa";
 import getProfile from "../../store/profile/profile.actions";
 
 class Profile extends Component {
@@ -38,8 +39,15 @@ class Profile extends Component {
 
   render() {
     const { profile } = this.props;
-    const { url, country, playerName, DOB, battingStyle, bowlingStyle } =
-      this.props.profile || {};
+    const {
+      url,
+      country,
+      playerName,
+      DOB,
+      battingStyle,
+      bowlingStyle,
+      videoURL,
+    } = this.props.profile || {};
     return (
       <div className="profile content">
         {!profile ? (
@@ -55,7 +63,7 @@ class Profile extends Component {
                     <span className="float-left">DOB</span>
                     <span className="float-right">Country</span>
                   </p>
-                  <p>
+                  <p className="p-info">
                     <span className="float-left">{DOB}</span>
                     <span className="float-right">{country}</span>
                   </p>
@@ -65,11 +73,19 @@ class Profile extends Component {
                     <span className="float-left">Batting style</span>
                     <span className="float-right">Bowling style</span>
                   </p>
-                  <p>
+                  <p className="p-info">
                     <span className="float-left">{battingStyle}</span>
                     <span className="float-right">{bowlingStyle}</span>
                   </p>
                 </div>
+              </div>
+              <div className="profile-icons">
+                {videoURL && (
+                  <a href={videoURL} target="_blank" rel="noreferrer">
+                    <FaYoutube />
+                  </a>
+                )}
+                <FaFacebook />
               </div>
             </div>
             <div className="bio">

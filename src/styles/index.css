@@ -12,7 +12,7 @@
 .ca-eagles .content-wrapper {
   position: relative;
   min-height: 82vh;
-  background-image: url("../assets/bg.png");
+  background: url("../assets/bg.png") center center/cover no-repeat;
   background-size: cover;
   top: 80px;
   padding-top: 20px;
@@ -25,12 +25,16 @@
   }
 }
 .ca-eagles .content {
-  padding: 10px;
+  padding: 10px 10px 40px 10px;
   max-width: 1230px;
   margin: auto;
 }
 .ca-eagles .content section {
   margin: 40px 0;
+}
+.ca-eagles .hp-loader {
+  width: 100%;
+  height: 700px;
 }
 .header {
   background: #c31010;
@@ -40,6 +44,7 @@
   width: 100%;
   position: fixed;
   z-index: 1;
+  font-size: 100%;
 }
 .header .logo {
   margin-left: 10px;
@@ -59,7 +64,8 @@
 }
 .header .links-wrapper .btn.btn-link {
   padding: 0;
-  margin: 0;
+  line-height: 0px;
+  font-size: 100%;
 }
 @media only screen and (min-width: 600px) {
   .header {
@@ -107,16 +113,43 @@
   text-align: center;
   line-height: 78px;
 }
-.home-carousel {
+.footer .footer-inner {
+  max-width: 1230px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.footer .legal,
+.footer .footer-icons {
+  flex-grow: 1;
+  text-align: right;
+  height: 78px;
+}
+.footer .footer-icons a {
+  padding-left: 20px;
+  font-size: 180%;
+}
+.slider {
   width: 100%;
   max-height: 700px;
 }
-.home-carousel .carousel-inner {
-  width: 100%;
-  max-height: 700px;
+@media only screen and (min-width: 600px) {
+  .slider {
+    height: 700px;
+  }
 }
-.home-carousel img {
+.image-loader {
+  background: url("../assets/team.jpg") center center/cover no-repeat;
+  max-height: 700px;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+@media only screen and (min-width: 600px) {
+  .image-loader {
+    height: 700px;
+  }
 }
 .stats {
   font-size: 75%;
@@ -127,7 +160,6 @@
 }
 .stats h3 {
   font-size: 160%;
-  margin: 40px 0 10px 0;
 }
 .stats-wrapper {
   background: rgba(195,16,16,0.82);
@@ -140,7 +172,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   width: 100%;
+  max-height: 640px;
 }
 .stats-b-wrapper:nth-child(3n+3) {
   margin-right: 0 !important;
@@ -154,15 +188,16 @@
 .stats-b-wrapper h3 {
   text-align: left;
 }
+.stats-b-wrapper .top-bowler,
+.stats-b-wrapper .top-batter {
+  height: 300px;
+}
 .stats-b-wrapper .badge img {
   width: 100%;
   height: 300px;
   border-radius: 20px;
-}
-@media only screen and (min-width: 600px) {
-  .stats-b-wrapper .badge img {
-    height: 200px;
-  }
+  object-fit: cover;
+  object-position: 0% 0;
 }
 .stats-players,
 .stats-results {
@@ -174,7 +209,10 @@
   font-size: 18px;
   list-style: none;
   margin-top: 20px;
-  height: 280px;
+  height: 100%;
+}
+.stats-results {
+  margin-top: 0;
 }
 .stats-players li {
   display: flex;
@@ -209,19 +247,14 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 222px;
+  width: 270px;
   display: inline-block;
 }
 .stats-see-more {
   position: absolute;
-  top: 42px;
+  top: 2px;
   right: 13px;
   font-size: 100%;
-}
-@media only screen and (min-width: 600px) {
-  .stats-see-more {
-    right: 13px;
-  }
 }
 .form-input-custom .input-error {
   color: #f00;
@@ -250,6 +283,65 @@
   padding: 10px 30px;
   border-radius: 20px;
 }
+.loader {
+  display: flex;
+  flex-flow: row wrap;
+}
+.loader div {
+  height: 222px;
+  border-radius: 8px;
+  margin: 10px;
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f6f6;
+  background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+  background-size: 800px 104px;
+  position: relative;
+}
+@media only screen and (min-width: 600px) {
+  .loader .stats-loader {
+    max-width: 352px;
+    margin-right: 52px;
+  }
+  .loader .stats-loader:nth-child(3) {
+    margin-right: 0;
+  }
+}
+@-moz-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+@-o-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
 .hp-videos {
   font-size: 75%;
   padding: 10px;
@@ -259,14 +351,16 @@
   margin: 40px 0 10px 0;
 }
 .hp-videos .see-more {
-  margin-top: 45px;
+  margin-top: 30px;
 }
 .hp-videos .videos-wrapper {
+  overflow: hidden;
+  clear: both;
+}
+.hp-videos .videos-wrapper .videos {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  overflow: hidden;
-  clear: both;
 }
 .hp-videos .videos-wrapper .video {
   margin: 0 0 10px 0;
@@ -361,23 +455,6 @@
     width: 100%;
   }
 }
-.login-form {
-  background: #fff;
-  padding: 40px 20px;
-  border-radius: 8px;
-}
-.login-form h4 {
-  margin-bottom: 20px;
-  color: #424242;
-}
-.login-form .form-input-custom {
-  margin-bottom: 40px;
-}
-@media only screen and (min-width: 600px) {
-  .login-form {
-    padding: 50px 180px;
-  }
-}
 .input-picker {
   width: 100%;
   border-radius: 20px;
@@ -401,20 +478,23 @@
 }
 .players-main .badge {
   width: 100%;
-  height: 300px;
+  height: 223px;
   margin-bottom: 10px;
 }
 .players-main .badge img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
+  object-fit: cover;
+  object-position: 60% 0%;
 }
 .players-main .badge:nth-child(4n + 4) {
   margin-right: 0;
 }
 @media only screen and (min-width: 600px) {
   .players-main .badge {
-    width: 300px;
+    width: 223px;
+    margin: 10px;
   }
 }
 .profile {
@@ -437,8 +517,10 @@
 }
 .profile .profile-info img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   border-radius: 8px;
+  object-fit: cover;
+  object-position: 60% 0%;
 }
 .profile .profile-info .dob-player-style {
   display: flex;
@@ -451,11 +533,29 @@
 .profile .profile-info .dob-player-style div {
   margin-bottom: 40px;
 }
+.profile .profile-info .dob-player-style .p-info {
+  font-size: 80%;
+}
 .profile .profile-info .border-bottom {
   border-bottom: 1px solid #fff;
   overflow: auto;
   margin: 0;
   font-size: 60%;
+}
+.profile .profile-info .profile-icons {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  text-align: right;
+  font-size: 300%;
+  flex-wrap: wrap-reverse;
+}
+.profile .profile-info .profile-icons a {
+  color: #f00;
+  margin-bottom: 20px;
+}
+.profile .profile-info .profile-icons svg {
+  cursor: pointer;
 }
 @media only screen and (min-width: 600px) {
   .profile .profile-info img {
@@ -471,9 +571,9 @@
   .profile .profile-info {
     padding: 70px;
   }
-  .profile .dob-player-style {
-    margin-left: 50px;
+  .profile .profile-info .dob-player-style {
     padding: 0;
+    margin-left: 150px;
   }
 }
 .about {
@@ -550,6 +650,50 @@
   height: 1000px;
   margin-top: -418px;
   overflow: hidden;
+}
+.login-form,
+.contact {
+  background: #fff;
+  padding: 40px 20px;
+  border-radius: 8px;
+}
+.login-form .alert-success,
+.contact .alert-success,
+.login-form .alert-danger,
+.contact .alert-danger {
+  font-size: 75%;
+}
+.login-form h4,
+.contact h4 {
+  margin-bottom: 20px;
+  color: #424242;
+}
+.login-form textarea,
+.contact textarea {
+  width: 100%;
+}
+.login-form .form-input-custom,
+.contact .form-input-custom {
+  margin-bottom: 40px;
+}
+@media only screen and (min-width: 600px) {
+  .login-form,
+  .contact {
+    width: 540px;
+    margin: 0 auto;
+    padding: 40px 100px;
+  }
+  .login-form h4,
+  .contact h4 {
+    text-align: center;
+  }
+  .login-form .contact-btn,
+  .contact .contact-btn,
+  .login-form .login-btn,
+  .contact .login-btn {
+    padding: 8px 60px;
+    text-transform: uppercase;
+  }
 }
 .Dropdown-root {
   position: relative;
@@ -694,19 +838,23 @@ li {
   margin: 0;
   padding: 0;
 }
-.f-icon {
-  margin-right: 20px;
-}
 .fa-thumbs-down {
   color: #f00;
+  margin-right: 20px;
 }
 .fa-thumbs-up {
   color: #008000;
+  margin-right: 20px;
+}
+input,
+textarea {
+  color: #808080;
 }
 input {
   height: 42px !important;
 }
 textarea {
+  padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
 }

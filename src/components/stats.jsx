@@ -1,25 +1,26 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
-import { FontAwesomeIcon as FA } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { compose } from "redux";
 import { classHelper as ch } from "../utils";
 import Badge from "./common/badge";
+import Loader from "./common/loader";
 
 const bc = "stats";
 const bw = ch(bc, "b-wrapper");
 
 const Stats = (props) => {
-  const players = (p, t = null) => {
-    return (p || []).map((b, index) => {
+  const { isLoading, batters, bowlers, results } = props;
+
+  const players = (players, t = null) => {
+    return (players || []).map((player, index) => {
       if (index <= 4) {
         return (
           <li key={index}>
-            <img src="http://placekitten.com/30/30" alt="cat" />
-            <span className="stat-name">{b.fullname}</span>
-            <span>{t ? b.wickets : b.runs}</span>
+            <span className="stat-name">{player.fullname}</span>
+            <span>{t ? player.wickets : player.runs}</span>
           </li>
         );
       }
@@ -27,16 +28,25 @@ const Stats = (props) => {
     });
   };
 
+  const getTopPlayerImageURL = (name) => {
+    if ((props.players || []).length && batters.length) {
+      const topPlayer = props.players.filter((p) => p.playerName === name)[0];
+      return topPlayer ? topPlayer.url : "";
+    }
+    return null;
+  };
+
   const r = (results = []) => {
     return results.map((r, i) => {
       return i <= 3 ? (
         <li key={i}>
-          <FA
-            className="f-icon"
-            icon={r.winner === "CA eagles" ? faThumbsUp : faThumbsDown}
-          />
+          {r.winner === "CA eagles" ? (
+            <FaThumbsUp className="fa-thumbs-up" />
+          ) : (
+            <FaThumbsDown className="fa-thumbs-down" />
+          )}
           <span className={ch(bc, "w")}>
-            {r.winner} won against
+            {r.winner} {"won against "}
             {r.looser}
           </span>
           <br />
@@ -55,42 +65,68 @@ const Stats = (props) => {
       ) : null;
     });
   };
-  const { batters, bowlers, results } = props;
+
+  const getName = (p) => p.length && p[0].fullname;
+
   return (
     <section className={bc}>
-      <h2 className="content">Player Stats</h2>
-      <div className={ch(bc, "wrapper")}>
-        <div className={`${ch(bc, "content")} content`}>
-          <div className={bw}>
-            <h3>Most runs</h3>
-            <Badge url="http://placekitten.com/400/400" />
-            <ul className={ch(bc, "players")}>{players(batters)}</ul>
+      {isLoading || isLoading === undefined ? (
+        <Loader
+          index={3}
+          className="content"
+          childClass="stats-loader"
+          width="100%"
+          height="300px"
+        />
+      ) : (
+        <Fragment>
+          <h2 className="content">Player Stats</h2>
+          <div className={ch(bc, "wrapper")}>
+            <div className={`${ch(bc, "content")} content`}>
+              <div className={bw}>
+                <h3>Most runs</h3>
+                <Badge
+                  className="top-batter"
+                  url={getTopPlayerImageURL(getName(batters))}
+                />
+                <ul className={ch(bc, "players")}>{players(batters)}</ul>
+              </div>
+              <div className={bw}>
+                <h3>Most wickets</h3>
+                <Badge
+                  className="top-bowler"
+                  url={getTopPlayerImageURL(getName(bowlers))}
+                />
+                <ul className={ch(bc, "players")}>{players(bowlers, "b")}</ul>
+              </div>
+              <div className={bw}>
+                <h3 className="float-left">Recent results</h3>
+                <Link to="/results" className={ch(bc, "see-more")}>
+                  See more
+                </Link>
+                <ul className={ch(bc, "results")}>{r(results)}</ul>
+              </div>
+            </div>
           </div>
-          <div className={bw}>
-            <h3>Most wickets</h3>
-            <Badge url="http://placekitten.com/400/400" />
-            <ul className={ch(bc, "players")}>{players(bowlers, "b")}</ul>
-          </div>
-          <div className={bw}>
-            <h3 className="float-left">Recent results</h3>
-            <Link to="/results" className={ch(bc, "see-more")}>
-              See more
-            </Link>
-            <Badge url="http://placekitten.com/400/400" />
-            <ul className={ch(bc, "results")}>{r(results)}</ul>
-          </div>
-        </div>
-      </div>
+        </Fragment>
+      )}
     </section>
   );
 };
 
 const mapStateToProps = (state) => ({
-  batters: state.firestore.ordered.battersRanking,
+  batters: (state.firestore.ordered.battersRanking || [])
+    .slice()
+    .sort((a, b) => b.runs - a.runs),
   bowlers: (state.firestore.ordered.bowlersRanking || [])
     .slice()
-    .sort((a, b) => a.ranking - b.ranking),
+    .sort((a, b) => b.wickets - a.wickets),
   results: state.firestore.ordered.winter2520202021,
+  players: state.firestore.ordered.playerInfo,
+  isLoading:
+    state.firestore.status.requesting.battersRanking ||
+    state.firestore.status.requesting.bowlersRanking ||
+    state.firestore.status.requesting.playerInfo,
 });
 
 export default compose(
@@ -104,6 +140,9 @@ export default compose(
     },
     {
       collection: "winter2520202021",
+    },
+    {
+      collection: "playerInfo",
     },
   ])
 )(Stats);

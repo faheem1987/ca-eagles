@@ -5,6 +5,7 @@
 @require "./stats";
 @require "./common/form-input";
 @require "./common/custom-button";
+@require "./common/loader";
 @require "./videos";
 @require "./admin";
 @require "./pages/players";
@@ -12,6 +13,7 @@
 @require "./pages/about";
 @require "./pages/schedule";
 @require "./pages/results";
+@require "./pages/login-contact";
 @require "./dropdown.css";
 
 body {
@@ -62,16 +64,19 @@ li {
   padding: 0;
 }
 
-.f-icon {
-  margin-right: 20px;
-}
-
 .fa-thumbs-down {
-  color: red;  
+  color: red; 
+  margin-right: 20px; 
 }
 
 .fa-thumbs-up {
   color: green;
+  margin-right: 20px;
+}
+
+input,
+textarea {
+  color: #808080;
 }
 
 input {
@@ -79,6 +84,7 @@ input {
 }
 
 textarea {
+  padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
 }

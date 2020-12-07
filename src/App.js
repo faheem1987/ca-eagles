@@ -10,6 +10,7 @@ import Profile from "./components/pages/profile";
 import About from "./components/pages/about";
 import Schedule from "./components/pages/schedule";
 import Results from "./components/pages/results";
+import Contact from "./components/pages/contact";
 
 const App = () => (
   <div className="ca-eagles">
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/gallery" component={Gallery} />
           <Route path="/schedule" component={Schedule} />
           <Route path="/results" component={Results} />
+          <Route path="/contact-us" component={Contact} />
           <Route path="/:id" component={Profile} />
           <Route path="/" component={Home} />
         </Switch>

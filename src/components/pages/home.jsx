@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import HomeCarousel from "../home-carousel";
 import Stats from "../stats";
 import Videos from "../videos";

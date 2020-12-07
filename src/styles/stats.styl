@@ -8,7 +8,6 @@
 
   h3 {
     font-size: 160%;
-    margin: 40px 0 10px 0;
   }
 
   &-wrapper {
@@ -24,7 +23,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     width: 100%;
+    max-height: 640px;
     
     &:nth-child(3n+3) {
       margin-right: 0 !important;
@@ -38,15 +39,18 @@
     h3{
       text-align: left;
     }
+
+    .top-bowler,
+    .top-batter {
+      height: 300px;
+    }
     
     .badge img {
       width: 100%;
       height: 300px;
       border-radius: 20px;
-
-      @media only screen and (min-width: 600px) {
-        height: 200px;
-      } 
+      object-fit: cover;
+      object-position: 0% 0;
     }
   }
 
@@ -62,7 +66,11 @@
     font-size: 18px;
     list-style: none;
     margin-top: 20px;
-    height: 280px;
+    height: 100%
+  }
+
+  &-results {
+    margin-top: 0;
   }
 
   &-players {
@@ -105,18 +113,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 222px;
+    width: 270px;
     display: inline-block;
   }
 
   &-see-more {
     position: absolute;
-    top: 42px;
+    top: 2px;
     right: 13px;
     font-size: 100%; 
-
-    @media only screen and (min-width: 600px) {
-      right: 13px;
-    } 
   }
 }

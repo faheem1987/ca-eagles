@@ -3,20 +3,26 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import Badge from "../common/badge";
+import Loader from "../common/loader";
 
 const Players = (props) => {
-  const { playerInfo } = props;
+  const { playerInfo, isLoading } = props;
   return (
     <div className="players-main content">
-      {(playerInfo || []).map(({ url, id }) => (
-        <Badge url={url} id={id} key={id} asLink />
-      ))}
+      {isLoading ? (
+        <Loader index={5} />
+      ) : (
+        (playerInfo || []).map(({ url, id }) => (
+          <Badge url={url} id={id} key={id} asLink />
+        ))
+      )}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   playerInfo: state.firestore.ordered.playerInfo,
+  isLoading: state.firestore.status.requesting.playerInfo,
 });
 
 export default compose(

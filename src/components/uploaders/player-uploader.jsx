@@ -19,6 +19,7 @@ const PlayerUploader = (props) => {
     image: helperObj,
     battingStyle: helperObj,
     bowlingStyle: helperObj,
+    videoURL: helperObj,
     globalError: null,
     showBowlingStyle: false,
   });
@@ -56,7 +57,8 @@ const PlayerUploader = (props) => {
     const updatedState = {};
     if (hasError.length) {
       return (Object.keys(state) || []).forEach((key) => {
-        if (key === "bio" || key === "globalError") return null;
+        if (key === "bio" || key === "globalError" || key === "videoURL")
+          return null;
         if (!state[key].value) {
           updatedState[key] = {
             value: state[key].value,
@@ -82,6 +84,7 @@ const PlayerUploader = (props) => {
       image,
       battingStyle,
       bowlingStyle,
+      videoURL,
     } = state;
 
     return uploadPlayer({
@@ -93,6 +96,7 @@ const PlayerUploader = (props) => {
       bio: bio.value,
       bowlingStyle: bowlingStyle.value,
       battingStyle: battingStyle.value,
+      videoURL: videoURL.value,
     });
   };
 
@@ -122,6 +126,7 @@ const PlayerUploader = (props) => {
     bowlingStyle,
     showBowlingStyle,
     globalError,
+    videoURL,
   } = state;
   return (
     <form className="uploader" onSubmit={onSubmit}>
@@ -189,12 +194,22 @@ const PlayerUploader = (props) => {
         }}
         placeholder="Select country"
       />
+      <FormInput
+        className={`${videoURL.error ? "danger" : ""}`}
+        type="text"
+        name="Upload batting/bowling video"
+        value={videoURL.value}
+        label="Upload batting/bowling video"
+        onChange={({ target }) => {
+          handleChange(target.value, "videoURL", false);
+        }}
+      />
       <textarea
         name="player bio"
         rows="5"
         cols="50"
         onChange={({ target }) => {
-          handleChange(target.value, "bio");
+          handleChange(target.value, "bio", false);
         }}
       />
       <input

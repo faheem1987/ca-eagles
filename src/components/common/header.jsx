@@ -22,6 +22,7 @@ const Header = (props) => {
           <Link to="/gallery">Gallery</Link>
           <Link to="/results">Results</Link>
           <Link to="/schedule">Schedule</Link>
+          <Link to="/contact-us">Contact Us</Link>
           <Link to="/admin">Admin</Link>
           {props.auth.uid && (
             <Fragment>
