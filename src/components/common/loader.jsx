@@ -1,13 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Loader = (props) => {
-  const {
-    index,
-    className,
-    width = "222px",
-    height = "222px",
-    childClass,
-  } = props;
+  const { index, className, width, height, childClass } = props;
   const style = {
     width,
     height,
@@ -19,6 +14,14 @@ const Loader = (props) => {
       ))}
     </div>
   );
+};
+
+Loader.propTypes = {
+  index: PropTypes.number,
+  className: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  childClass: PropTypes.string,
 };
 
 export default Loader;

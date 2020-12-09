@@ -10,7 +10,7 @@ const Players = (props) => {
   return (
     <div className="players-main content">
       {isLoading ? (
-        <Loader index={5} />
+        <Loader index={5} className="players-loader" />
       ) : (
         (playerInfo || []).map(({ url, id }) => (
           <Badge url={url} id={id} key={id} asLink />

@@ -33,6 +33,7 @@
       max-width: 100%;
       font-size: 150%;
       padding: 20px;
+      margin-top: 20px;
 
       div {
         margin-bottom: 40px;
@@ -54,7 +55,7 @@
       display: flex;
       flex-flow: column;
       flex-grow: 1;
-      text-align: right; 
+      text-align: center; 
       font-size: 300%;
       flex-wrap: wrap-reverse;
       
@@ -72,6 +73,10 @@
 
   @media only screen and (min-width: 600px) {
     .profile-info {
+      .profile-icons {
+        text-align: right; 
+      }
+
       img {
         width: 300px;
       }
@@ -92,6 +97,7 @@
       .dob-player-style {
         padding: 0;
         margin-left: 150px;
+        margin-top: 0;
       }
     }
   } 

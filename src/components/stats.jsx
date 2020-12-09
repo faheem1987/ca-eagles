@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import { compose } from "redux";
@@ -80,7 +79,7 @@ const Stats = (props) => {
         />
       ) : (
         <Fragment>
-          <h2 className="content">Player Stats</h2>
+          <h2>Player Stats</h2>
           <div className={ch(bc, "wrapper")}>
             <div className={`${ch(bc, "content")} content`}>
               <div className={bw}>
@@ -101,9 +100,6 @@ const Stats = (props) => {
               </div>
               <div className={bw}>
                 <h3 className="float-left">Recent results</h3>
-                <Link to="/results" className={ch(bc, "see-more")}>
-                  See more
-                </Link>
                 <ul className={ch(bc, "results")}>{r(results)}</ul>
               </div>
             </div>

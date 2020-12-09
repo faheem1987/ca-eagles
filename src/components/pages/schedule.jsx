@@ -38,7 +38,6 @@ const Schedule = (props) => {
 
 const mapStateToProps = (state) => ({
   schedule: sorting(state.firestore.ordered.schedule),
-  c: state.firestore,
 });
 
 export default compose(

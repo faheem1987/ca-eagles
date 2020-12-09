@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, BrowserRouter as Router, Switch, withRouter } from "react-router-dom";
 import Header from "./components/common/header";
 import Footer from "./components/common/footer";
 import Home from "./components/pages/home";
@@ -9,8 +9,8 @@ import Gallery from "./components/pages/gallery";
 import Profile from "./components/pages/profile";
 import About from "./components/pages/about";
 import Schedule from "./components/pages/schedule";
-import Results from "./components/pages/results";
 import Contact from "./components/pages/contact";
+import NotFound from "./components/pages/not-found";
 
 const App = () => (
   <div className="ca-eagles">
@@ -23,10 +23,10 @@ const App = () => (
           <Route path="/admin" component={Admin} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/schedule" component={Schedule} />
-          <Route path="/results" component={Results} />
           <Route path="/contact-us" component={Contact} />
-          <Route path="/:id" component={Profile} />
-          <Route path="/" component={Home} />
+          <Route path="/player/:id" component={Profile} />
+          <Route exact path="/" component={Home} />
+          <Route component={NotFound} />
         </Switch>
       </div>
       <Footer />

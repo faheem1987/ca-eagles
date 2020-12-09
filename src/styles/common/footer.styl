@@ -1,18 +1,18 @@
 .footer {
   
   font-size: 75%;
-  height: 78px;
+  height: 84px;
   background: #000;
   left: 0;
   bottom: 0; 
   width: 100%;
   text-align: center;
-  line-height: 78px;
+  padding: 5px;
+
 
   .footer-inner {
     max-width: 1230px;
-    display: flex;
-    flex-flow: row nowrap;
+    display: column;
     justify-content: space-between;
     margin: 0 auto;
   }
@@ -21,7 +21,6 @@
   .footer-icons {
     flex-grow: 1; 
     text-align: right; 
-    height: 78px;
   }
 
   .footer-icons{
@@ -30,4 +29,24 @@
       font-size: 180%;
     }
   }
+
+  @media only screen and (min-width: 600px) {
+    text-align: center;
+    line-height: 78px;
+    text-align: right;
+
+    .footer-inner {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      margin: 0 auto;
+    }
+    
+    
+
+    .legal,
+    .footer-icons {
+      height: 78px;
+    }
+  } 
 }

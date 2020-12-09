@@ -2,7 +2,7 @@ import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { FaYoutube, FaFacebook } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import getProfile from "../../store/profile/profile.actions";
 
 class Profile extends Component {
@@ -85,7 +85,6 @@ class Profile extends Component {
                     <FaYoutube />
                   </a>
                 )}
-                <FaFacebook />
               </div>
             </div>
             <div className="bio">

@@ -7,7 +7,7 @@ const Badge = ({ url, id, className, asLink }) => {
 
   return (
     <div className={`badge ${className}`}>
-      {asLink ? <Link to={`/${id}`}>{img}</Link> : img}
+      {asLink ? <Link to={`/player/${id}`}>{img}</Link> : img}
     </div>
   );
 };
