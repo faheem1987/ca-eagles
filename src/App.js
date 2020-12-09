@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Route, BrowserRouter as Router, Switch, withRouter } from "react-router-dom";
+import React from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Header from "./components/common/header";
 import Footer from "./components/common/footer";
 import Home from "./components/pages/home";
